@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import api from "../services/apiServices";
 import { toast } from "react-toastify";
 import toastError from "../errors/toastError";
-import { DashboardAdmin } from "../context/UserContext";
+import { DashboardAdmin } from "../interface";
 
 const useAuth = () => {
 	const history = useHistory();
@@ -102,7 +102,7 @@ const useAuth = () => {
 		}
 	};
 
-	return { isAuth, user, loading, handleLogin, handleLogout };
+	return { isAuth, user, setUser, loading, handleLogin, handleLogout };
 };
 
 export default useAuth;

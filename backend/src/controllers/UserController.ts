@@ -2,11 +2,11 @@ import { Request, Response } from "express";
 import AppError from "../errors/AppError";
 
 import CreateUserService from "../services/AdminServices/CreateAdminService";
-import ListUsersService from "../services/AdminServices/ListUsersService";
 import UpdateUserService from "../services/AdminServices/UpdateUserService";
 import ShowUserService from "../services/AdminServices/ShowAdminService";
 import DeleteUserService from "../services/AdminServices/DeleteAdminService";
 import CheckSettingsService from "../services/SettingServices/CheckSettingsService";
+import ListAdminsService from "../services/AdminServices/ListAdminsService";
 
 type IndexQuery = {
   searchParam: string;
@@ -16,12 +16,14 @@ type IndexQuery = {
 export const index = async (req: Request, res: Response): Promise<Response> => {
   const { searchParam, pageNumber } = req.query as IndexQuery;
 
-  const { admins, count, hasMore } = await ListUsersService({
+  const { admins, count, hasMore } = await ListAdminsService({
     searchParam,
     pageNumber
   });
 
-  return res.json({ admins, count, hasMore });
+  const filterAdmins = admins.filter((admin) => admin.id != parseInt(req.user.id));
+
+  return res.json({ admins: filterAdmins, count, hasMore });
 };
 
 export const store = async (req: Request, res: Response): Promise<Response> => {

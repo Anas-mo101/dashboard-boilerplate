@@ -32,7 +32,7 @@ const CreateAdminService = async ({
       .required()
       .test(
         "Check-email",
-        "An user with this email already exists.",
+        "ERR_USER_EXISTS",
         async value => {
           if (!value) return false;
           const emailExists = await prisma.admin.findFirst({

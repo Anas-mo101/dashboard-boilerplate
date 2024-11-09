@@ -1,11 +1,12 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { DashboardAdmin, UserContext } from "../context/UserContext";
 import { addUser } from "../services/userServices";
 import toastError from "../errors/toastError";
+import { useAuthContext } from "../context/AuthContext";
+import { DashboardAdmin } from "../interface";
 
 const Register = () => {
-  const { setUser } = useContext(UserContext);
+  const { setUser } = useAuthContext();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -61,7 +62,7 @@ const Register = () => {
             <input
               onChange={({ target }) => setName(target.value)}
               type="name"
-              className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border border-slate-800 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
           <div className="mb-2">
@@ -71,7 +72,7 @@ const Register = () => {
             <input
               onChange={({ target }) => setEmail(target.value)}
               type="email"
-              className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border border-slate-800 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
           <div className="mb-2">
@@ -81,7 +82,7 @@ const Register = () => {
             <input
               onChange={({ target }) => setPassword(target.value)}
               type="password"
-              className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              className="block w-full px-4 py-2 mt-2 text-blue-700 bg-white border border-slate-800 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
             />
           </div>
           <div className="mt-6">

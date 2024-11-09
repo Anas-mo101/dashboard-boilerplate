@@ -1,4 +1,6 @@
 import React, { ReactNode } from "react";
+import Header from "./Header";
+import Footer from "./Footer";
 
 
 interface LoggedInLayoutProps {
@@ -8,9 +10,10 @@ interface LoggedInLayoutProps {
 const LoggedInLayout: React.FC<LoggedInLayoutProps> = ({ children }) => {
 
     return (
-        <div>
+        <main className="px-12 pt-12 pb-10">
+            <Header/>
             {children ? children : null}
-        </div>
+        </main>
     );
 };
 

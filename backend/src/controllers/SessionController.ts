@@ -8,7 +8,7 @@ import { SendRefreshToken } from "../helpers/SendRefreshToken";
 export const store = async (req: Request, res: Response): Promise<Response> => {
   const { email, password } = req.body;
 
-  const { token, user, refreshToken } = await AuthAdminService({
+  const { token, admin, refreshToken } = await AuthAdminService({
     email,
     password
   });
@@ -17,7 +17,7 @@ export const store = async (req: Request, res: Response): Promise<Response> => {
 
   return res.status(200).json({
     token,
-    user
+    admin
   });
 };
 

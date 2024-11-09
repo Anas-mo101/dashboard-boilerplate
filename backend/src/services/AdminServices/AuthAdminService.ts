@@ -18,7 +18,7 @@ interface Request {
 }
 
 interface Response {
-  user: SerializedUser;
+  admin: SerializedUser;
   token: string;
   refreshToken: string;
 }
@@ -47,7 +47,7 @@ const AuthAdminService = async ({
   const serializedUser = SerializeUser(user);
 
   return {
-    user: serializedUser,
+    admin: serializedUser,
     token,
     refreshToken
   };

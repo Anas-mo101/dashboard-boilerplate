@@ -1,11 +1,13 @@
 import React, { createContext, ReactNode, useContext } from "react";
 import useAuth from "../hooks/useAuth";
+import { DashboardAdmin } from "../interface";
 
 export interface AuthContextProps {
   loading: boolean;
-  user: any;  // Replace `any` with a specific user type if available
+  user: DashboardAdmin | null;  
   isAuth: boolean;
   handleLogin: (userData: any) => Promise<void>;
+  setUser: (admin: DashboardAdmin) => void;
   handleLogout: () => void;
 }
 
@@ -16,11 +18,11 @@ interface AuthProviderProps {
 }
 
 const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const { loading, user, isAuth, handleLogin, handleLogout } = useAuth();
+  const { loading, user, setUser, isAuth, handleLogin, handleLogout } = useAuth();
 
   return (
     <AuthContext.Provider
-      value={{ loading, user, isAuth, handleLogin, handleLogout }}
+      value={{ loading, user, setUser, isAuth, handleLogin, handleLogout }}
     >
       {children}
     </AuthContext.Provider>

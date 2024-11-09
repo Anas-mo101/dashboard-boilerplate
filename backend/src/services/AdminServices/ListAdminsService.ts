@@ -12,7 +12,7 @@ interface Response {
   hasMore: boolean;
 }
 
-const ListAdminService = async ({
+const ListAdminsService = async ({
   searchParam = "",
   pageNumber = "1"
 }: Request): Promise<Response> => {
@@ -46,7 +46,9 @@ const ListAdminService = async ({
     }
   });
 
-  const count = await prisma.admin.count();
+  const count = await prisma.admin.count({
+    where: whereCondition
+  });
 
   const hasMore = count > skip + admins.length;
 
@@ -58,4 +60,4 @@ const ListAdminService = async ({
   };
 };
 
-export default ListAdminService;
+export default ListAdminsService;

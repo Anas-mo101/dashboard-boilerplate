@@ -10,6 +10,9 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 import Route from "./Route";
+import Admin from "../pages/Admin";
+import Profile from "../pages/Profile";
+import Footer from "../components/Footer";
 
 function Routes() {
   return (
@@ -18,11 +21,13 @@ function Routes() {
         <Switch>
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
-
           <LoggedInLayout>
             <Route exact path="/" component={Home} isPrivate />
+            <Route exact path="/admin" component={Admin} isPrivate />
+            <Route exact path="/profile" component={Profile} isPrivate />
           </LoggedInLayout>
         </Switch>
+        <Footer/>
         <ToastContainer autoClose={3000} />
       </AuthProvider>
     </BrowserRouter>
