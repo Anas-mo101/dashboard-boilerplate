@@ -11,6 +11,8 @@ Includes
 - Profile Managment
 - Admin Managment
     - listing
+        - pagination
+        - search
     - creation
     - deletion
     - update/view
